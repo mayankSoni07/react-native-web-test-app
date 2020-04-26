@@ -8,9 +8,9 @@ import styles from './index.styles';
 
 export default class Home extends React.Component {
   constructor(props){
-
+    super(props);  
   }
-  
+
   render(){
     return (
       <ScrollView style={styles.container}>

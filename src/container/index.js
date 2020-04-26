@@ -7,13 +7,17 @@ import StatusBarComponent from '../component/StatusBar';
 import Header from '../component/Header';
 import MenuDrawer from '../component/MenuDrawer';
 
+import { getHandledData } from '../utilities/commonMethods';
+
 /* Import Styles */
 import styles from './index.styles';
 
 export default class HybridApp extends React.Component {
   constructor(props){
     super(props);
+    let obj = getHandledData();
     this.state = {
+      ...obj,
       isOpenMenuDrawer: false
     }
 
@@ -27,6 +31,7 @@ export default class HybridApp extends React.Component {
   }
 
   render(){
+    console.log('state ', this.state)
     return (
       <View style={styles.container}>
 
@@ -40,7 +45,7 @@ export default class HybridApp extends React.Component {
         <Home />
 
         {/* Render Side Drawer, Only when isOpenMenuDrawer key is True in state */}
-        {this.state.isOpenMenuDrawer && <MenuDrawer toggleMenuDrawer={this.toggleMenuDrawer} />}
+    {this.state.isOpenMenuDrawer && <MenuDrawer {...this.state} toggleMenuDrawer={this.toggleMenuDrawer} />}
 
       </View>
     );

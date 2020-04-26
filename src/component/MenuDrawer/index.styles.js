@@ -13,27 +13,37 @@ export default StyleSheet.create({
         marginTop: StatusBar.currentHeight,
         height: '100%',
     },
-    closeButtonContainer:{
+    closeButtonContainer: {
         alignItems: "center",
-        elevation:4,
-        shadowOffset: { width: 5, height: 5 },
-        shadowColor: "black",
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
     },
-    closeButton:{
+    closeButton: {
         height: 60,
         width: 60
     },
-    dataArea:{
+    dataArea: {
         width: 200,
         height: '100%',
         backgroundColor: '#fff',
     },
-    emptyArea:{
-        width: width-200,
+    emptyArea: {
+        width: width - 200,
         height: '100%',
         opacity: 0.75,
         backgroundColor: 'grey',
+    },
+    categoryContainer: {
+        justifyContent: "center",
+        alignItems: 'center',
+    },
+    categoryWrapper:{
+        justifyContent: "center",
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    seperator: {
+        height: 1,
+        marginBottom: 10,
+        width: 140,
+        backgroundColor: "grey"
     }
 });
