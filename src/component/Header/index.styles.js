@@ -12,6 +12,8 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: 'center',
         justifyContent: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: "grey"
     },
     menuIconContainer:{
         position: "absolute",

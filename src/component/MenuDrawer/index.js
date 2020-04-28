@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Image, Text, ScrollView, TouchableHighlight } from 'react-native';
+import { View, Image, Text, TouchableHighlight } from 'react-native';
 
+import { EXCLUSIVE_VALUE, SEE_ALL_VALUE } from '../../utilities/commonConstants';
 import styles from './index.styles';
 
 export default class MenuDrawer extends React.Component {
@@ -8,9 +9,10 @@ export default class MenuDrawer extends React.Component {
     super(props);
     this.state = { ...this.props };
   }
- 
+
+  changeSelectedCategoryComponent
+
   render() {
-      console.log('menu state', this.state)
     return (
         <View style={styles.drawerContainer}>
 
@@ -22,7 +24,9 @@ export default class MenuDrawer extends React.Component {
                 </TouchableHighlight>
                 <View style={styles.categoryContainer}>
                     {this.state.productsData.map((product)=>{
-                        return <TouchableHighlight key={product.category} onPress={()=>console.log('hello ji')}>
+                        return <TouchableHighlight key={product.category} onPress={() => {
+                                this.props.changeSelectedCategory(product.category)
+                            }}>
                             <View style={styles.categoryWrapper}>
                                 <View style={styles.seperator}></View>
                                 <Text>{product.category.toUpperCase()}</Text>
@@ -30,11 +34,31 @@ export default class MenuDrawer extends React.Component {
                             </View>
                         </TouchableHighlight>
                     })}
+                    <TouchableHighlight key={EXCLUSIVE_VALUE} onPress={() => {
+                            this.props.changeSelectedCategory(EXCLUSIVE_VALUE);
+                        }}>
+                        <View style={styles.categoryWrapper}>
+                            <View style={styles.seperator}></View>
+                            <Text>EXCLUSIVE</Text>
+                            <Text>{this.props.exclusiveProducts.length + " Restaurants"}</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight key={SEE_ALL_VALUE} onPress={() => {
+                            this.props.changeSelectedCategory(SEE_ALL_VALUE);
+                        }}>
+                        <View style={styles.categoryWrapper}>
+                            <View style={styles.seperator}></View>
+                            <Text>SEE ALL</Text>
+                            <Text>{this.props.seeAllProducts.length + " Restaurants"}</Text>
+                        </View>
+                    </TouchableHighlight>
                 </View>
             </View>
 
             {/* Empty area in Right */}
-            <View style={styles.emptyArea}></View>
+            <TouchableHighlight onPress={this.props.toggleMenuDrawer}>
+                <View style={styles.emptyArea}></View>
+            </TouchableHighlight>
 
         </View>
     );
